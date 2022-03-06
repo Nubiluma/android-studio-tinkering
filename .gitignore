@@ -17,6 +17,5 @@
 .cxx
 local.properties
 /.idea/
-/gradle/
 bin/
 gen/
