@@ -15,17 +15,28 @@ public class NumberGuessingGame extends AppCompatActivity {
 
     private final Random random = new Random();
     private final int max = 100;
-    private int number;
+    private final int number;
     private int input;
-    private int tries = 0;
+    private int tries;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_guessing_game);
+        NumberGuessingGame game = new NumberGuessingGame();
+    }
+
+    public NumberGuessingGame() {
+        number = generateRandomNumber();
+        tries = 0;
+
+        Toast.makeText(this, "A number has been generated", Toast.LENGTH_LONG).show();
+
         TextView t = findViewById(R.id.description);
         t.setText("Guess a number between 1 and " + max);
-        number = generateRandomNumber();
+
+        Button button = (Button) findViewById(R.id.confirmGuess);
+        button.setText("Confirm");
     }
 
     private int generateRandomNumber() {
@@ -41,6 +52,7 @@ public class NumberGuessingGame extends AppCompatActivity {
 
         if (input == number) {
             t.setText("You found the right number!");
+            retry();
         } else if (input < number) {
             t.setText("The number is higher than " + input);
         } else {
@@ -66,4 +78,20 @@ public class NumberGuessingGame extends AppCompatActivity {
         t.setText("Tries: " + tries);
     }
 
+    private void retry() {
+        Button button = (Button) findViewById(R.id.confirmGuess);
+        button.setText("Click to try again");
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                restartGame();
+            }
+        });
+    }
+
+    private void restartGame() {
+
+        NumberGuessingGame game = new NumberGuessingGame();
+    }
 }
