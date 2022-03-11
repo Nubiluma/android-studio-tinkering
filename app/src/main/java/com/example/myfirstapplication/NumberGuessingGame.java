@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ public class NumberGuessingGame extends AppCompatActivity {
     private final int max = 100;
     private int number;
     private int input;
+    private int tries = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +56,14 @@ public class NumberGuessingGame extends AppCompatActivity {
 
         EditText t = findViewById(R.id.editTextNumber);
         input = Integer.parseInt(t.getText().toString());
+        tries += 1;
+        printTries();
         feedback();
-        
+    }
+
+    private void printTries() {
+        TextView t = findViewById(R.id.tries);
+        t.setText("Tries: " + tries);
     }
 
 }
