@@ -4,8 +4,8 @@ import static android.graphics.Color.rgb;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +23,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //button for opening game activity
+        Button gameActivity = (Button) findViewById(R.id.gameActivity);
+        gameActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openGameActivity();
+            }
+        });
+    }
+
+    /**
+     * Method will open class of the game as a new activity
+     */
+    private void openGameActivity() {
+        Intent intent = new Intent(this, NumberGuessingGame.class);
+        startActivity(intent);
     }
 
     //Variant A
@@ -58,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         EditText t = findViewById(R.id.nameText);
         String input = t.getText().toString();
 
-        TextView v = (TextView) findViewById(R.id.textView);
+        TextView v = (TextView) findViewById(R.id.textView1);
         String textView = v.getText().toString();
         v.setText(input);
 
