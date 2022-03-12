@@ -44,6 +44,7 @@
         android:minHeight="48dp"
         android:text="0"
         android:textSize="16sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,11 +52,11 @@
         app:layout_constraintVertical_bias="0.187" />
 
     <Button
-        android:id="@+id/confirmGuess"
+        android:id="@+id/gameButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="input"
-        android:text="Confirm"
+        android:onClick="startGame"
+        android:text="Click to start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -74,7 +75,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirmGuess"
+        app:layout_constraintTop_toBottomOf="@+id/gameButton"
         app:layout_constraintVertical_bias="0.085" />
 
     <TextView
